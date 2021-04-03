@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import { userRouter } from "./router";
 
 const app = express();
-const PORT = 4000;
+//const PORT = 4000;
 
 const handleHome = (req, res) => res.send("hello - from home");
 
@@ -22,6 +22,6 @@ app.get("/", handleHome);
 
 app.get("/profile", handleProfile);
 
-app.use("/user", userRouter);//누군가 /user경로에 접속하면, userRouter 전체를 사용할 수 있게 함.
+app.use("/user", userRouter);
 
 export default app;
