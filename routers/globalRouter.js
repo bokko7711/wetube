@@ -1,12 +1,14 @@
 import express from "express";
-import routes from "../routes";// 온점을 2개 쓴 ../는 상위 폴더에서 찾는다는 의미. ().=>위로, /=>아래로)
+import { join, login, logout } from "../controllers/userController";
+import { home, search } from "../controllers/videoController";
+import routes from "../routes";
 
 const globalRouter = express.Router();
 
-globalRouter.get(routes.home, (req, res) => res.send("home"));
-globalRouter.get(routes.join, (req, res) => res.send("join"));
-globalRouter.get(routes.login, (req, res) => res.send("login"));
-globalRouter.get(routes.logout, (req, res) => res.send("logout"));
-globalRouter.get(routes.search, (req, res) => res.send("search"));
+globalRouter.get(routes.home, home);//videoController에서 home 함수를 만들고 export해 두면, 여기서 home을 입력하기만 해도 자동 import 완성 기능이 뜸. 엔터치면 됨.
+globalRouter.get(routes.search, search);
+globalRouter.get(routes.join, join);
+globalRouter.get(routes.login, login);
+globalRouter.get(routes.logout, logout);
 
 export default globalRouter;

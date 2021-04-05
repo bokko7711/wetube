@@ -8,7 +8,7 @@ const SEARCH = "/search";
 //users
 
 const USERS = "/users";
-const USER_DETAIL = "/:id"; //express는 url에 콜론(:)으로 시작하는 값이 있으면 변수로 인식. "/:id" ≈ `/${id}`
+const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 

@@ -20,4 +20,4 @@ app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
 
-export default app;
+export default app;//default로 export한다는 건 이 파일 전체를 export한다는 뜻이었음!!
