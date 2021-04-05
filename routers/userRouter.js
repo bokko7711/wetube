@@ -1,10 +1,12 @@
 import express from "express";
+import { users, userDetail, editProfile, changePassword } from "../controllers/userController";
+import routes from "../routes";
 
 const userRouter = express.Router();
 
+userRouter.get(routes.self, users);
+userRouter.get(routes.userDetail, userDetail);
+userRouter.get(routes.editProfile, editProfile);
+userRouter.get(routes.changePassword, changePassword);
+
 export default userRouter;
-/**
- * m - model => data. {database}
- * v - view => how does the data look {template}
- * c - control => function that looks for the data (data를 보여주기 위한 함수) {javascript function}
- */
