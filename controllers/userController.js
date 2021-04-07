@@ -1,4 +1,4 @@
-export const join = (req, res) => res.render("join");//req,res 순서 지켜야 함.
+export const join = (req, res) => res.render("join");
 export const login = (req, res) => res.render("login");
 export const logout = (req, res) => res.render("logout");
 
