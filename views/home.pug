@@ -4,4 +4,7 @@ extends layouts/main
 //- block content - main에서 있었던 block content를 여기서 overwrite하는 것.
 block content 
     .videos
-        h1 Video
+        each video in videos
+            h1=video.title
+            p=video.description
+//- (each-in)videoController에서 받아온 videos 배열의 원소를 video로 명명하고, 각 원소마다 다음 줄부터의 템플릿을 적용.

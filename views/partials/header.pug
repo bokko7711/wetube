@@ -6,7 +6,7 @@ header.header
         form(action=routes.search, method="get")        
             input(type="text",placeholder="Search by term...",name="term")
         //- submit이 되면 action에 써진 주소로 get 메소드가 실행됨.
-        //- submit할 때, term이라는 key에 우리가 입력한 데이터가 저장되어 routes.search에 보내짐.
+        //- submit할 때, term이라는 key에 우리가 입력한 데이터가 저장되어 routes.search에 보내짐.(name속성 데이터가 get/post를 통해 전달됨.)
     .header__column
         ul 
             li 
