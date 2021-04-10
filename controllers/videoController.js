@@ -7,7 +7,7 @@ export const home = (req, res) => {
 export const search = (req, res) => {
     //const searchingBy = req.query.term;//header.pug에서 보낸 데이터가 req에 담김.
     const { query: { term: searchingBy } } = req;//
-    res.render("search", { pageTitle: "search", searchingBy });//searchingBy:searchingBy
+    res.render("search", { pageTitle: "search", searchingBy, videos });//searchingBy:searchingBy
 };
 export const videos1 = (req, res) => res.render("videos", { pageTitle: "videos" });
 export const upload = (req, res) => res.render("upload", { pageTitle: "upload" });

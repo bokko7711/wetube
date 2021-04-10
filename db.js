@@ -4,7 +4,7 @@ export const videos = [
         title: 'Video 111',
         description: 'it is awesome',
         views: 9999,
-        videoFile: "https://archive.org/details/BigBuckBunny_124",
+        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         creator: {
             id: 84,
             name: "bokko",
@@ -16,10 +16,10 @@ export const videos = [
         title: 'Video 112',
         description: 'it is awesome2',
         views: 9539,
-        videoFile: "https://archive.org/details/BigBuckBunny_124",
+        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         creator: {
             id: 84,
-            name: "bokkoryestjs",
+            name: "bokko",
             email: "bokko7711@naver.com"
         }
     },
@@ -28,7 +28,7 @@ export const videos = [
         title: 'Video 113',
         description: 'it is awesome3',
         views: 9123,
-        videoFile: "https://archive.org/details/BigBuckBunny_124",
+        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         creator: {
             id: 84,
             name: "bokkofdgsg",
@@ -40,7 +40,7 @@ export const videos = [
         title: 'Video 114',
         description: 'it is awesome4',
         views: 9999,
-        videoFile: "https://archive.org/details/BigBuckBunny_124",
+        videoFile: "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
         creator: {
             id: 84,
             name: "bokko",
