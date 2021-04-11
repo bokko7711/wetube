@@ -9,7 +9,15 @@ header.header
         //- submit할 때, term이라는 key에 우리가 입력한 데이터가 저장되어 routes.search에 보내짐.(name속성 데이터가 get/post를 통해 전달됨.)
     .header__column
         ul 
-            li 
-                a(href=routes.join) Join
-            li 
-                a(href=routes.login) Log in
+            if !user.isAuthenticated
+                li 
+                    a(href=routes.join) Join
+                li 
+                    a(href=routes.login) Log in
+            else 
+                li 
+                    a(href=routes.upload) Upload 
+                li 
+                    a(href=routes.userDetail(user.id)) Profile
+                li 
+                    a(href=routes.userDetail) Log out
