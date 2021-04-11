@@ -2,10 +2,10 @@ extends layouts/main
 
 block content 
     .form-container 
-        form(action=routes.upload,method="post")
+        form(action=`/videos${routes.upload}`,method="post")
            label(for="file") Video File
-           input(type="file",name="file",id="file")
-           input(type="text", placeholder="Title",name="name")
-           textarea(name="Description",placeholder="Description")
+           input(type="file",name="file",id="file", required=true)
+           input(type="text", placeholder="Title",name="title", required=true)
+           textarea(name="description",placeholder="Description", required=true)
            input(type="submit",value="Upload Video")
 //-label - input 앞에 붙는 제목. for 속성 데이터와 같은 id를 찾아 거기에 붙게 됨.

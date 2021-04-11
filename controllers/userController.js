@@ -12,7 +12,7 @@ export const postJoin = (req, res) => {//req => get/post request 요청을 받�
     else {
         //To Do : Register user
         //To Do : Log user in
-        res.redirect(routes.home);
+        res.redirect(routes.home);//redirect : 이미 생성된 페이지로 다시 이동하게 해 줌.
     }
     res.render("join", { pageTitle: "join" });
 };
@@ -21,7 +21,10 @@ export const postLogin = (req, res) => {
     //To Do : database
     res.redirect(routes.home);
 }
-export const logout = (req, res) => res.render("logout", { pageTitle: "logout" });
+export const logout = (req, res) => {
+    //To Do: Log out Process
+    res.redirect(routes.home);
+}
 
 export const users = (req, res) => res.render("users", { pageTitle: "users" });
 export const userDetail = (req, res) => res.render("user-detail", { pageTitle: "user-detail" });
