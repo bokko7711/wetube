@@ -19,10 +19,18 @@ export const search = (req, res) => {
 export const videos1 = (req, res) => res.render("videos", { pageTitle: "videos" });
 
 export const getUpload = (req, res) => res.render("upload", { pageTitle: "upload" });
-export const postUpload = (req, res) => {
-    const { body: { file, title, description } } = req;
-    //To Do : Upload/save video
-    res.redirect(routes.videoDetail(4536));
+export const postUpload = async (req, res) => {
+    const {
+        body: { title, description },
+        file: { path }
+    } = req;
+    const newVideo = await Video.create({
+        fileUrl: path,
+        title,//title:title
+        description//description:description
+    });
+    console.log(newVideo);
+    res.redirect(routes.videoDetail(newVideo.id));//.id는 몽구스 model에서 제공해주는 api에서 자동으로 생성됨.
 };
 
 export const videoDetail = (req, res) => res.render("video-detail", { pageTitle: "video-detail" });
