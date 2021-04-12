@@ -17,6 +17,7 @@ app.use(function (req, res, next) {//동영상을 볼 수가 없어서 일단 �
     return next();
 });
 app.set("view engine", "pug");
+app.use("/uploads", express.static("uploads"));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,3 +29,10 @@ app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
 
 export default app;
+// app.use("/uploads", express.static("uploads")); 에 대한 정리
+// -> /uploads 접근 시
+// (ex : video URL - http://localhost:4000/uploads/videos/{:id})
+
+// 기존 : pug로 구성한 uploads/videos/{:id} 페이지 이동 -> 만들지 않았으니 에러
+
+// static 미들웨어 사용 : 서버 상의 /uploads 디렉토리로 이동 -> videos 디렉토리 내에 id값에 해당하는 비디오 get

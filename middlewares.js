@@ -1,7 +1,7 @@
 import routes from "./routes";
 import multer from "multer";
 
-const multerVideo = multer({ dest: "videos/" });
+const multerVideo = multer({ dest: "uploads/videos/" });
 
 export const localsMiddleWare = (req, res, next) => {
     res.locals.siteName = "WeTube";
@@ -13,4 +13,4 @@ export const localsMiddleWare = (req, res, next) => {
     next();
 };
 
-export const uploadVideo = multerVideo.single('videoFile');
+export const uploadVideo = multerVideo.single('videoFile');//videoFile : upload.pug에 있는 name=videoFile인 input안에 있던 데이터.
