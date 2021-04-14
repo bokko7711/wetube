@@ -11,9 +11,16 @@ export const home = async (req, res) => {
         res.render("home", { pageTitle: "Home", videos: [] });
     }
 };
-export const search = (req, res) => {
-    //const searchingBy = req.query.term;//header.pug에서 보낸 데이터가 req에 담김.
-    const { query: { term: searchingBy } } = req;//
+export const search = async (req, res) => {
+    const { query: { term: searchingBy } } = req;
+    let videos = [];
+    try {
+        videos = await Video.find(
+            { title: { $regex: searchingBy, $options: "i" } });
+    }
+    catch (error) {
+        console.log(error);
+    }
     res.render("search", { pageTitle: "search", searchingBy, videos });//searchingBy:searchingBy
 };
 export const videos1 = (req, res) => res.render("videos", { pageTitle: "videos" });
@@ -83,7 +90,7 @@ export const deleteVideo = async (req, res) => {
         await Video.findOneAndRemove({ _id: id });
     }
     catch (error) {
-
+        console.log(error);
     }
     res.redirect(routes.home);
 }
