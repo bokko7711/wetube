@@ -3,7 +3,7 @@ import Video from "../models/Video";
 
 export const home = async (req, res) => {
     try {
-        const videos = await Video.find({});
+        const videos = await Video.find({}).sort({ '_id': -1 });
         res.render("home", { pageTitle: "Home", videos });//videos:videos
     }
     catch (error) {
@@ -33,9 +33,61 @@ export const postUpload = async (req, res) => {
     res.redirect(routes.videoDetail(newVideo.id));//.id는 몽구스 model에서 제공해주는 api에서 자동으로 생성됨.
 };
 
-export const videoDetail = (req, res) => res.render("video-detail", { pageTitle: "video-detail" });
-export const editVideo = (req, res) => res.render("edit-video", { pageTitle: "edit-video" });
-export const deleteVideo = (req, res) => res.render("delete-video", { pageTitle: "delete-video" });
+export const videoDetail = async (req, res) => {
+    const {
+        params: { id }
+    } = req;
+    try {
+        const video = await Video.findById(id);
+        console.log(video);
+        res.render("video-detail", { pageTitle: video.title, video });//video:video
+    }
+    catch (error) {
+        res.redirect(routes.home);
+    }
+};
+
+export const getEditVideo = async (req, res) => {
+    const {
+        params: { id }
+    } = req;
+    try {
+        //console.log(id);
+        const video = await Video.findById(id);
+        //console.log(video);
+        res.render("edit-video", { pageTitle: `Edit ${video.title}`, video });
+    }
+    catch (error) {
+        res.redirect(routes.home);
+    }
+};
+export const postEditVideo = async (req, res) => {
+    const {
+        params: { id },
+        body: { title, description }
+    } = req;
+    try {
+        await Video.findOneAndUpdate({ _id: id }, { title, description });//model의 title : postEditVideo의 title.
+        res.redirect(routes.videoDetail(id));
+    }
+    catch (error) {
+        res.redirect(routes.home);
+    }
+};
+
+export const deleteVideo = async (req, res) => {
+    const {
+        params: { id }
+    } = req;
+    try {
+        await Video.findOneAndRemove({ _id: id });
+    }
+    catch (error) {
+
+    }
+    res.redirect(routes.home);
+}
+
 // 자바스크립트는 동시에 여러 일을 할 수 있음. 특정 문장이 시간이 오래 걸리는 일일 경우,
 // 그 문장과 다음 문장을 동시에 수행하는데, 이는 오류의 원인이 될 수 있음. 이때 async/await를 사용.
 // async는 자바스크립트에게 '이 함수의 [어떤 부분]은 꼭 기다려야 해'라고 말하는 것과 같음.
